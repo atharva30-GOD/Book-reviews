@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block heading %}
+    Error 
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-dark">
+        <a class="nav" href="index.html" style="margin-left: 20px;">Books</a>
+        <ul class="nav justify-content-end">
+            <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('index') }}">Register</a>
+            </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('show_login') }}" style="margin-right: 20px;">Login</a>
+            </li>
+        </ul>
+    </nav>
+    <hr class="hr-danger" />
+    <center>
+        <h2 style="font-family: cursive; margin-top: 250px;">{{ message }}</h2>
+    </center>
+    <hr class="hr-danger" />
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Books
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-dark">
+        <a class="nav" href="#" style="margin-left: 20px;">Books</a>
+        <ul class="nav justify-content-end">
+            <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('show_search') }}">Search</a>
+            </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('logout') }}" style="margin-right: 20px;">Logout</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="jumbotron">
+        <h1 class="display-4">Reviews & Ratings </h1>
+        <p class="lead">Title : {{ books[0][1] }}</p>
+        <p class="lead">ISBN : {{ books[0][0] }} </p>
+        <p class="lead">Author : {{ books[0][2] }} </p>
+        <p class="lead">Year of Publishing : {{ books[0][3] }} </p>
+        <p class="lead">Average Rating on Goodreads : {{ avg_rating }} </p>
+    </div>
+    <p style="margin-left: 20px;">Comments :</p>
+    <center>
+        <p style="margin-top: 200px;"> No comments :)</p>
+    </center>
+
+
+{% endblock %}

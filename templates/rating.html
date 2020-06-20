@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Books
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-dark">
+        <a class="nav" href="#" style="margin-left: 20px;">Books</a>
+        <ul class="nav justify-content-end">
+            <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('show_search') }}">Search</a>
+            </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('logout') }}" style="margin-right: 20px;">Logout</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="jumbotron">
+        <h1 class="display-4">Reviews & Ratings </h1>
+        <p class="lead">Title : {{ books[0][1] }}</p>
+        <p class="lead">ISBN : {{ books[0][0] }} </p>
+        <p class="lead">Author : {{ books[0][2] }} </p>
+        <p class="lead">Year of Publishing : {{ books[0][3] }} </p>
+        <p class="lead">Average Rating on Goodreads : {{ avg_rating }} </p>
+    </div>
+    <p style="margin-left: 20px;">Comments :</p>
+        <div class="container results-container">
+            <div class="card">
+                {% for name in names %}
+                    <div class="card-header">
+                    Rating : {{ name[1] }}
+                    </div>
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                        <p>{{ name[2] }}</p>
+                        <footer class="blockquote-footer">Reviewed By : <cite title="Source Title">{{ name[0] }}</cite></footer>
+                        </blockquote>
+                    </div>
+                    <br>
+                    <hr class="hr-danger" />
+                    {% endfor %}
+            </div>
+        </div>
+
+
+{% endblock %}

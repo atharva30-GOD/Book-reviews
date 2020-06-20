@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block heading %}
+    Results!
+{% endblock %}
+
+{% block body %}
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-dark">
+        <a class="nav" href="#" style="margin-left: 20px;">Books</a>
+        <ul class="nav justify-content-end">
+            <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('show_search') }}">Search</a>
+            </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('logout') }}" style="margin-right: 20px;">Logout</a>
+            </li>
+        </ul>
+    </nav>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+        <h1 class="display-4" style="padding-top: 20px;">Here are the results for " {{ msg }} "</h1>
+        </div>
+    </div>
+    <div class="container results-container">
+        {% for book in books %}
+            <div class="card">
+                <h5 class="card-header">{{ book[1] }}</h5>
+                <div class="card-body">
+                <h5 class="card-title">ISBN : {{ book[0] }} </h5>
+                <p class="card-text">AUTHOR : {{ book[2] }} </p>
+                <p class="card-text">YEAR : {{ book[3] }} </p>
+                <div class="btn-wrapper text-center d-flex justify-content-between">
+                    <a href=" {{ url_for('book', isbn= book[0] ) }} " class="btn btn-outline-primary">Rate & Review</a>
+                    <a class="btn btn-outline-dark" href="{{ url_for('seereviews', isbn= book[0]) }}">See Reviews</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="hr-danger" />
+        {% endfor %}   
+    </div>  
+
+{% endblock %}

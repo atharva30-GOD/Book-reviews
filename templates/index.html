@@ -1,0 +1,37 @@
+{% extends  "layout.html" %}
+
+{% block heading %}
+    Books
+{% endblock %}
+{% block body %}    
+    <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-dark">
+        <a class="nav" href="index.html" style="margin-left: 20px;">Books</a>
+        <ul class="nav justify-content-end">
+            <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('index') }}">Register<span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+            <a class="nav-link" href="{{ url_for('show_login') }}" style="margin-right: 20px;">Login</a>
+            </li>
+        </ul>
+    </nav>
+    <center>
+        <h1 style="margin-top:200px;">Create Your Account </h1>
+        <form action=" {{ url_for('register') }} " method="POST" data-toggle="validator" role="form">
+            <div class="input-group mb-2 col-lg-2">
+                <input type="text" class="form-control" placeholder="Username" name="username" required autocomplete="off" >
+            </div>
+        
+            <div class="input-group mb-2 col-lg-2">
+                <input type="password" class="form-control" placeholder="Password" name="password" required autocomplete="off" pattern="[^-']+">
+            </div>
+        
+            <div class="input-group mb-2 col-lg-2">
+                <input type="password" class="form-control" placeholder="Confirm Password" name="confirm" required autocomplete="off" pattern="[^-']+">
+            </div>
+            
+            <button  class="btn btn-outline-dark">Register</button>
+        </form>
+    </center>
+
+{% endblock %}
